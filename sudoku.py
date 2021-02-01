@@ -36,19 +36,23 @@ class Sudoku():
 
     def print_sudoku(self):
         i = j = 0
-        row_to_print = f"{'-'*37}\n"
+        row_to_print = f"{'-'*40}\n"
         while i <= 8:
             row_to_print += "|"
             while j <= 8:
                 if type(self.sudoku_ready[i][j]) == list:
-                    row_to_print += "   |"
+                    # row_to_print += "   |"
+                    row_to_print += "    "
                 else:
-                    row_to_print += " " + (str(self.sudoku_ready[i][j]) + " |")
+                    # row_to_print += " " + (str(self.sudoku_ready[i][j]) + " |")
+                    row_to_print += " " + (str(self.sudoku_ready[i][j]) + "  ")
                     pass
+                if (j + 1) % 3 == 0:
+                     row_to_print += "|"
                 j += 1
             row_to_print += "\n"
             if (i + 1) % 3 == 0:
-                row_to_print += f"{'-'*37}\n"
+                row_to_print += f"{'-'*40}\n"
             j = 0
             i += 1
         print(row_to_print)
