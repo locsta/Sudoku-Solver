@@ -3,6 +3,8 @@ import time
 
 
 class Sudoku():
+    """This class aims to solve sudokus, it takes an unsolved sudoku stored as a list of lists (9 * 9) with 0 as missing values
+    """
     def __init__(self, sudoku_to_solve=[]):
         if not sudoku_to_solve:
             self.sudoku_to_solve = [[5, 3, 0, 0, 7, 0, 0, 0, 0],
@@ -22,7 +24,7 @@ class Sudoku():
         print(f"The sudoku contains {self.nb_unknown} missing values")
         self.sudoku_ready = []
 
-    def preprocessing(self):
+    def __preprocessing(self):
         for liste in self.sudoku_processing:
             sudoku_liste = []
             for value in liste:
@@ -49,8 +51,7 @@ class Sudoku():
             i += 1
         print(row_to_print)
     
-
-    def process_lines(self):
+    def __process_lines(self):
         i = j = 0
         while i <= 8:
             while j <= 8:
@@ -61,8 +62,7 @@ class Sudoku():
                 j += 1
             j = 0
             i += 1
-
-    def process_rows(self):
+    def __process_rows(self):
         column = row = 0
         while column <= 8:
             while row <= 8:
@@ -76,7 +76,7 @@ class Sudoku():
             row = 0
             column += 1
 
-    def process_squares(self):
+    def __process_squares(self):
         col = 0
         row = 0
         col_index = 0
@@ -103,7 +103,7 @@ class Sudoku():
             col_index = 0
             row_index += 3
             
-    def clr_answers(self):
+    def __clr_answers(self):
         i = j = 0
         while i <= 8:
             while j <= 8:
@@ -118,21 +118,17 @@ class Sudoku():
             i += 1
 
     def solve_sudoku(self):
-        self.preprocessing()
+        self.__preprocessing()
         while len(self.solved) < self.nb_unknown:
-            self.process_lines()
-            self.clr_answers()
-            self.process_rows()
-            self.clr_answers()
-            self.process_squares()
-            self.clr_answers()
+            self.__process_lines()
+            self.__clr_answers()
+            self.__process_rows()
+            self.__clr_answers()
+            self.__process_squares()
+            self.__clr_answers()
         self.print_sudoku()
         
 if __name__ == '__main__':
     # execute only if run as the entry point into the program
     sudoku = Sudoku()
     sudoku.solve_sudoku()
-
-
-
-
