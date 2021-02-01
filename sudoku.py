@@ -36,7 +36,7 @@ class Sudoku():
 
     def print_sudoku(self):
         i = j = 0
-        row_to_print = ""
+        row_to_print = f"{'-'*37}\n"
         while i <= 8:
             row_to_print += "|"
             while j <= 8:
@@ -47,6 +47,8 @@ class Sudoku():
                     pass
                 j += 1
             row_to_print += "\n"
+            if (i + 1) % 3 == 0:
+                row_to_print += f"{'-'*37}\n"
             j = 0
             i += 1
         print(row_to_print)
